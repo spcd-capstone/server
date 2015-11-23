@@ -3,14 +3,14 @@ Server
 
 The server is responsible for three primary tasks. They are
 
-    - Run node discovery server.
+- Run node discovery server.
 
-    - Host web api for interacting with control app and third party
-      applications. Also possibly serve static files (control app and
-      corresponding files), but this should be done by external server
-      software.
+- Host web api for interacting with control app and third party
+    applications. Also possibly serve static files (control app and
+    corresponding files), but this should be done by external server
+    software.
 
-    - Spawn processes running node control scripts.
+- Spawn processes running node control scripts.
 
 
 Design
