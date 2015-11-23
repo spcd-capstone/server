@@ -1,0 +1,6 @@
+venv/*
+
+*.pyo
+*.pyc
+*.swp
+*.db
