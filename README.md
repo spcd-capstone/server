@@ -77,6 +77,8 @@ database. To do this, type the following:
 
     (venv) $ python manage.py shell
     >>> db.create_all()
+    >>> NodeType.insert_types()
+    >>> ScriptLogEntryType.insert_types()
 
 By default, this will create a sqlite database in 'hacer/tmp.db'. To change
 where this database is stored, use the "HADB_PATH" environment variable (which
