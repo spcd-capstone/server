@@ -1,3 +1,4 @@
+from flask import redirect, url_for
 
 from . import api
 from .. import db
@@ -5,9 +6,6 @@ from ..models import Node
 
 @api.route('/', methods=['GET', 'POST'])
 def index():
-    return api.send_static_file('static/index.html')
+    return "hello from blueprint"
 
-@api.route('/static/<path:path>')
-def send_static(path):
-    return send_from_directory('static', path)
 

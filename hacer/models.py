@@ -26,7 +26,7 @@ class Node(db.Model):
     name = db.Column(db.String(64), unique=True)
     type_id = db.Column(db.Integer, db.ForeignKey('nodetypes.id'))
     ip = db.Column(db.String(16))
-    lastUpdate = db.Column(db.DateTime())
+    last_update = db.Column(db.DateTime())
 
     def __repr__(self):
         return '<Node %r>' % self.name
