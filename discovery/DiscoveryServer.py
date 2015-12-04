@@ -8,7 +8,7 @@ from hacer.models import Node, NodeType
 def run_discovery_server(Session):
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-    sock.bind(("localhost", 7775))
+    sock.bind(("0.0.0.0", 7775))
 
     while 1:
         raw_data, addr = sock.recvfrom(1024)
@@ -29,15 +29,19 @@ def run_discovery_server(Session):
             node_type = session.query(NodeType).filter_by(name='other').one()
 
         # create new Node
+        is_new = False
         n = session.query(Node).filter_by(id=data['id']).first()
         if n is None:
             n = Node(id=data['id'])
+            is_new = True
         n.ip = ipstr
         n.type_id = node_type.id
         n.last_update = date_time
 
         # insert/update database
-        session.add(n)
+        if is_new:
+            session.add(n)
+
         session.commit()
         Session.remove()
 
