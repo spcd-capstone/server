@@ -62,7 +62,6 @@ necessary.
 To get a specific node, use the following urls:
 
     GET /nodes/id/<id:int>
-    GET /nodes/name/<name:string>
 
 These API calls will return the specified node data nested in a "node" value
 
