@@ -19,6 +19,12 @@ class NodeType(db.Model):
 
         db.session.commit()
 
+    def to_json(self):
+        return {
+            'id': self.id,
+            'name': self.name
+            }
+
 
 class Node(db.Model):
     __tablename__ = 'nodes'
@@ -30,6 +36,15 @@ class Node(db.Model):
 
     def __repr__(self):
         return '<Node %r>' % self.name
+
+    def to_json(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'type': self.type.name,
+            'ip': self.ip,
+            'last_updated': str(self.last_update)
+            }
 
 
 class ScriptLogEntryType(db.Model):
@@ -53,6 +68,12 @@ class ScriptLogEntryType(db.Model):
 
         db.session.commit()
 
+    def to_json(self):
+        return {
+            'id': self.id,
+            'name': self.name
+            }
+
 
 class ScriptLogEntry(db.Model):
     __tablename__ = 'logs'
@@ -61,9 +82,20 @@ class ScriptLogEntry(db.Model):
     typestamp = db.Column(db.DateTime())
     thread_id = db.Column(db.Integer)
     script_name = db.Column(db.String())
+    params = db.Column(db.String())
     entry_type_id = db.Column(db.Integer, db.ForeignKey('scriptlogentrytypes.id'))
     data = db.Column(db.Text)
 
     def __repr__(self):
         return '<ScriptLogEntry %r>' % self.name
+
+    def to_json(self):
+        return {
+            'id': self.id,
+            'timestamp': str(self.timestamp),
+            'thread_id': self.thread_id,
+            'script_name': self.script_name,
+            'params': self.params,
+            'data': self.data
+            }
 
