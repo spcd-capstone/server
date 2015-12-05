@@ -96,6 +96,7 @@ class ScriptLogEntry(db.Model):
             'thread_id': self.thread_id,
             'script_name': self.script_name,
             'params': self.params.split(),
+            'entry_type': self.entry_type.name,
             'data': self.data
             }
 
