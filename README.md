@@ -88,7 +88,20 @@ needs to be set for the scriptingAPI as well)
 Running The Server
 ------------------
 
-To run the server while inside the virtualenv, type the following:
+To run the application, you must have `redis` installed. You must have already
+gone through the process of installing the virtual environment and setting up
+the database as described above.
+
+Once everything is installed and working, to launch the application suite, use
+the provided `run.sh`. There is no need to be inside of the virtual
+environment, it just needs to exist in the `venv` folder. The `run.sh` script
+will use the correct python binaries.
+
+The `run.sh` script will spawn a redis-server process, a celery worker, and
+then launch the Flask development server. The flask development server will
+then spawn a thread running the discovery server.
+
+To run *JUST* the server while inside the virtualenv, type the following:
 
     (venv) $ python manage.py runserver
 

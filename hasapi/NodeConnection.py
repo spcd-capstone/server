@@ -43,12 +43,12 @@ class NodeConnection:
 
     def __enter__(self):
         try:
-            self.db_session_maker = haapi.db_session_maker
-            self.thread_id = haapi.thread_id
-            self.script_name = haapi.script_name
-            self.node_name = haapi.node_name
-            self.params = haapi.params
-        except AttrributeError as ex:
+            self.db_session_maker = hasapi.db_session_maker
+            self.thread_id = hasapi.thread_id
+            self.script_name = hasapi.script_name
+            self.node_name = hasapi.params[0]
+            self.params = hasapi.params[1:0]
+        except AttributeError as ex:
             self.__log("exception", repr(ex))
 
         try:
@@ -151,6 +151,6 @@ class NodeConnection:
             session.commit()
 
         except Exception as ex:
-            pass
+            print(repr(ex))
 
 

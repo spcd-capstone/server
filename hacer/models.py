@@ -76,10 +76,10 @@ class ScriptLogEntryType(db.Model):
 
 
 class ScriptLogEntry(db.Model):
-    __tablename__ = 'logs'
+    __tablename__ = 'scriptlogs'
 
     id = db.Column(db.Integer, primary_key=True)
-    typestamp = db.Column(db.DateTime())
+    timestamp = db.Column(db.DateTime())
     thread_id = db.Column(db.Integer)
     script_name = db.Column(db.String())
     params = db.Column(db.String())
