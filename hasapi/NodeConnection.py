@@ -47,7 +47,7 @@ class NodeConnection:
             self.thread_id = hasapi.thread_id
             self.script_name = hasapi.script_name
             self.node_name = hasapi.params[0]
-            self.params = hasapi.params[1:0]
+            self.params = hasapi.params[1:]
         except AttributeError as ex:
             self.__log("exception", repr(ex))
 
@@ -86,7 +86,7 @@ class NodeConnection:
         self.sock.close()
 
     def setVal(self, key, value):
-        if not self.isConnected:
+        if not self.is_connected:
             msg = "No node name provided"
             if self.node_name:
                 msg = "Not connected to node {}".format(self.node_name)

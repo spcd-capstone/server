@@ -2,12 +2,13 @@ body {
     margin: 0px;
     padding: 0px;
     font-family: Arial, sans-serif;
+    background: #e8e7e4;
 }
 #page {
 }
 .sidebar {
     box-sizing: border-box;
-    position: absolute;
+    position: fixed;
     width: 230px;
     z-index:1;
     background-color: #343131;
@@ -50,7 +51,6 @@ body {
     position: absolute;
     height: 100%;
     width: 100%;
-    background: #e8e7e4;
     min-width: 960px;
 }
 .content {

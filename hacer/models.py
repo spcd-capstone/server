@@ -38,12 +38,16 @@ class Node(db.Model):
         return '<Node %r>' % self.name
 
     def to_json(self):
+        use_name = self.name
+        if use_name is None:
+            use_name = ""
+
         return {
             'id': self.id,
-            'name': self.name,
+            'name': use_name,
             'type': self.type.name,
             'ip': self.ip,
-            'last_updated': str(self.last_update)
+            'last_updated': self.last_update.strftime("%Y-%m-%dT%H:%M:%S")
             }
 
 

@@ -18,8 +18,10 @@ class InvalidData(Exception):
 
 
 def serialize(data):
-    if (isinstance(data, int)):
+    if isinstance(data, int):
         return "i" + str(int(data)) + "e"
+    elif data.isdigit():
+        return "i" + data + "e"
     elif (isinstance(data, str)):
         return str(len(data)) + ":" + data
     raise InvalidType("Could not serialize type: {}".format(type(data).__name__))

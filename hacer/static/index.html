@@ -12162,7 +12162,7 @@ Elm.Pages.NodePage.make = function (_elm) {
       "{ \"name\": \"",
       A2($Basics._op["++"],newName,"\" }"));
       var url = A2($Basics._op["++"],
-      "/json/nodes/id/",
+      "/api/nodes/id/",
       $Basics.toString(id));
       var decoder = $Json$Decode.succeed(RenameNodeSent);
       var sendRenameReq = A4($Pages$Helper.getHttpPostTask,

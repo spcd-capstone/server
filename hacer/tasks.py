@@ -1,3 +1,6 @@
+import sys
+import importlib
+
 from celery.signals import task_prerun
 from flask import g
 from sqlalchemy.orm import scoped_session, sessionmaker
@@ -31,12 +34,10 @@ def launch_script(name, params):
     hasapi.thread_id = thread_id
     hasapi.script_name = name
     hasapi.params = params
-    __import__("hacer.scripts." + name)
 
-"""
-self.db_session_maker = haapi.db_session_maker
-self.thread_id = haapi.thread_id
-self.script_name = haapi.script_name
-self.node_name = haapi.node_name
-self.params = haapi.params
-"""
+    m = "hacer.scripts." + name
+    if (m in sys.modules):
+        importlib.reload(sys.modules[m])
+    else:
+        __import__(m)
+
