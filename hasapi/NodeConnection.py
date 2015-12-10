@@ -76,7 +76,8 @@ class NodeConnection:
             else:
                 self.__log("exit_status", "success")
 
-        except Exception:
+        except Exception as ex:
+            print(ex)
             pass
 
         return True
@@ -110,7 +111,7 @@ class NodeConnection:
 
 
     def getVal(self, key):
-        if not self.isConnected:
+        if not self.is_connected:
             msg = "No node name provided"
             if self.node_name:
                 msg = "Not connected to node {}".format(self.node_name)
@@ -129,7 +130,7 @@ class NodeConnection:
             raise TimeoutError("no response recieved")
         if not v[0] == '+':
             raise InvalidResponse("response was: {}".format(v))
-        return serialization.deserialize(v)
+        return serialization.deserialize(v[1:])
 
 
     def log(self, msg):
