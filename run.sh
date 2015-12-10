@@ -10,5 +10,5 @@ redis-server ./redis.conf &
 # launch celery worker
 ./venv/bin/celery worker -A hacer.tasks.celery &
 
-./venv/bin/python manage.py runserver
+./venv/bin/python manage.py runserver -h 0.0.0.0
 
